@@ -36,33 +36,34 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <header class="app-bar promote-layer">
-      <div class="app-bar-container">
-        <button class="menu"><img src="images/hamburger.svg" alt="Menu"></button>
-        <h1 class="logo">Web <strong>Starter Kit</strong></h1>
-        <section class="app-bar-actions">
-        <!-- Put App Bar Buttons Here -->
-        <!-- e.g <button><i class="icon icon-star"></i></button> -->
-        </section>
-      </div>
-    </header>
 
-    <nav class="navdrawer-container promote-layer">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#hello">Hello</a></li>
-        <li><a href="#get-started">Get Started</a></li>
-        <li><a href="styleguide.html">Style Guide</a></li>
-      </ul>
-    </nav>
 
-    <main>
-      <h1 id="hello">Hello!</h1>
-      <p>Welcome to Web Starter Kit.</p>
+  <script id="vertexShader" type="text/something-not-javascript">
 
-      <h2 id="get-started">Get Started.</h2>
-      <p>Read how to <a href="https://developers.google.com/web/starter-kit">Get Started</a> or check out the <a href="styleguide.html">Style Guide</a>.</p>
-    </main>
+            attribute vec4 position;
+            varying vec2 v_texCoord;
+            attribute vec2 texCoord;
+
+            void main() {
+                v_texCoord = texCoord;
+                gl_Position = position;
+            }
+
+        </script>
+
+  <script id="fragmentShader" type="text/something-not-javascript">
+            precision mediump float;
+            varying vec2 v_texCoord;
+           // uniform sampler2D texture;
+
+            void main(){
+              //  gl_FragColor = texture2D(texture, v_texCoord);
+                gl_FragColor = vec4(1.0, 0.0,0.0,1.0);
+            }
+
+        </script>
+    <script src="scripts/tdl/tdl/base.js"></script>
+    <script src="scripts/sketch.js"></script>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>

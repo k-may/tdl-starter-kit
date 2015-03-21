@@ -18,33 +18,25 @@
  */
 (function () {
   'use strict';
+  var sketch;
 
-  var querySelector = document.querySelector.bind(document);
+  function init(){
 
-  var navdrawerContainer = querySelector('.navdrawer-container');
-  var body = document.body;
-  var appbarElement = querySelector('.app-bar');
-  var menuBtn = querySelector('.menu');
-  var main = querySelector('main');
+    sketch = new Sketch();
+    sketch.width = window.innerWidth;
+    sketch.height = window.innerHeight;
 
-  function closeMenu() {
-    body.classList.remove('open');
-    appbarElement.classList.remove('open');
-    navdrawerContainer.classList.remove('open');
+    document.body.appendChild(sketch);
+    draw();
   }
 
-  function toggleMenu() {
-    body.classList.toggle('open');
-    appbarElement.classList.toggle('open');
-    navdrawerContainer.classList.toggle('open');
-    navdrawerContainer.classList.add('opened');
+
+  function draw(){
+    requestAnimationFrame(draw);
+
+    sketch.draw();
   }
 
-  main.addEventListener('click', closeMenu);
-  menuBtn.addEventListener('click', toggleMenu);
-  navdrawerContainer.addEventListener('click', function (event) {
-    if (event.target.nodeName === 'A' || event.target.nodeName === 'LI') {
-      closeMenu();
-    }
-  });
+  init();
+
 })();

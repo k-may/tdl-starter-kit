@@ -14,22 +14,17 @@ function Sketch() {
 
   var canvas = document.createElement("canvas");
   var gl;
-  var image;
   var loaded = false;
-
-  var noiseFBO, noisePlane;
   var plane;
-  var time = 1.0;
 
   function init() {
-
     setTimeout(render, 1);
-
   }
 
   function render() {
 
-    //todo use ts for type casting and code completion
+    //todo use ts for type casting and code completion!?
+
     gl = tdl.webgl.setupWebGL(canvas, {premultipliedAlpha: false, antialias: false});
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -40,7 +35,7 @@ function Sketch() {
     gl.clearColor(1, 1, 1, 0);
     gl.colorMask(true, true, true, true);
 
-    plane = createPlane({}, "vertexShader", "fragmentShader");
+    plane = createPlane({}, "../glsl/vertex2D.glsl", "../glsl/fragment2D.glsl");
 
     loaded = true;
 
@@ -56,9 +51,9 @@ function Sketch() {
 
   function createPlane(textures, vertexTagId, fragmentTagId) {
 
-    var program = tdl.programs.loadProgram(
-      document.getElementById(vertexTagId).text,
-      document.getElementById(fragmentTagId).text);
+    var vertex = ShaderLoader.Load(vertexTagId);
+    var fragment = ShaderLoader.Load(fragmentTagId);
+    var program = tdl.programs.loadProgram(vertex, fragment);
 
     //todo change array pattern
     var arrays = tdl.primitives.createPlane(2, 2, 1, 1);

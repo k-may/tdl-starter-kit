@@ -16,11 +16,28 @@
  *  limitations under the License
  *
  */
+
+var ShaderLoader = (function () {
+  ShaderLoader.Load = function (path, variable) {
+    var httpRequest;
+    if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
+      httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 6 and older
+      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    httpRequest.open('GET', path, false);
+    httpRequest.send(null);
+    return httpRequest.responseText;
+  }
+  return ShaderLoader;
+})();
+
+
 (function () {
   'use strict';
   var sketch;
 
-  function init(){
+  function init() {
 
     sketch = new Sketch();
     sketch.width = window.innerWidth;
@@ -31,9 +48,8 @@
   }
 
 
-  function draw(){
+  function draw() {
     requestAnimationFrame(draw);
-
     sketch.draw();
   }
 

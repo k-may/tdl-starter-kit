@@ -132,7 +132,7 @@ gulp.task('html', function () {
     // Update production Style Guide paths
     .pipe($.replace('components/components.css', 'components/main.min.css'))
     // Minify any HTML
-    .pipe($.if('*.html', $.minifyHtml()))
+    //.pipe($.if('*.html', $.minifyHtml()))
     // Output files
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'html'}));

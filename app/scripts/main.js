@@ -18,6 +18,9 @@
  */
 
 var ShaderLoader = (function () {
+  function ShaderLoader(){
+  }
+
   ShaderLoader.Load = function (path, variable) {
     var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
